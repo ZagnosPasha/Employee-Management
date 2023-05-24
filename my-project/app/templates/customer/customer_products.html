@@ -1,0 +1,30 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+{% block body %}
+<div class="content-section">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+
+                <h1 style="text-align:center;">Our Products</h1>
+                <hr class="intro-divider">
+                {% for product in products %}
+                <div class="center">
+                    <p>
+                        {% if product.id in image_urls %}
+
+                        <img src="{{ image_urls[product.id] }}" class="product-img" alt="Product Image">
+
+                        {% endif %}
+                    </p>
+                    <p>{{ product.name }} </p>
+                    <p>{{ product.cost_usd }} $</p>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

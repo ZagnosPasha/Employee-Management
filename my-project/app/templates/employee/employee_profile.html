@@ -1,0 +1,40 @@
+<!-- app/templates/employee/employee_profile.html -->
+
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center;">Employee Profile</h1>
+        <hr class="intro-divider">
+        <div class="center">
+            <p>Email: {{ employee.email }}</p>
+            <p>Username: {{ employee.username }}</p>
+            <p>First Name: {{ employee.first_name }}</p>
+            <p>Last Name: {{ employee.last_name }}</p>
+            <p>Phone Number: {{ employee.phone_number }}</p>
+            <p>Address: {{ employee.address }}</p>
+            <p>Department: {{employee.department.name}}</p>
+            <p>Role: {{employee.role.name}}</p>
+            <p>Leave Remaining: {{employee.remaining_leave_days}} </p>
+        
+
+            <h2>Update Profile</h2>
+            <form method="post">
+                {{ form.hidden_tag() }}
+                {{ form.phone_number.label }} {{ form.phone_number() }}
+                {{ form.address.label }} {{ form.address() }}
+                {{ form.submit() }}
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

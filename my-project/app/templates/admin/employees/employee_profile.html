@@ -1,0 +1,27 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block body %}
+<div class="content-section">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                
+                <h1 style="text-align:center;">Employee Profile</h1>
+                <hr class="intro-divider">
+                <div class="center">
+                    <p>Email: {{ employee.email }}</p>
+                    <p>Username: {{ employee.username }}</p>
+                    <p>First Name: {{ employee.first_name }}</p>
+                    <p>Last Name: {{ employee.last_name }}</p>
+                    <p>Phone Number: {{ employee.phone_number }}</p>
+                    <p>Address: {{ employee.address }}</p>
+                    <p>Department: {{employee.department.name}}</p>
+                    <p>Role: {{employee.role.name}}</p>
+                    <p>Leave Available: {{employee.remaining_leave_days}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

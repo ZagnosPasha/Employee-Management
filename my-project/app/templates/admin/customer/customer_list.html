@@ -1,0 +1,63 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Customers{% endblock %}
+{% block body %}
+<div class="content-section">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <br />
+                {{ utils.flashed_messages() }}
+                <br />
+                <h1 style="text-align:center;">Customers</h1>
+                {% if customers %}
+                <hr class="intro-divider">
+                <div class="center">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+
+                                <th width="40%"> Name </th>
+                                <th width="40%"> Email </th>
+
+                                <th width="15%"> Assign Order </th>
+                                <th width="15%"> Delete </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for customer in customers %}
+                            <tr>
+                                
+                                <td> {{ customer.first_name }} {{ customer.last_name }} </td>
+                                <td> {{ customer.email }} </td>
+                                
+
+                                <td>
+                                    <a href="{{ url_for('admin.new_order', id=customer.id) }}">
+                                        <i class="fa fa-pencil"></i> Assign Order
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('admin.delete_customer', id=customer.id) }}">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div style="text-align: center">
+                        {% else %}
+                        <div style="text-align: center">
+                            <h3> No customers present. </h3>
+                            <hr class="intro-divider">
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

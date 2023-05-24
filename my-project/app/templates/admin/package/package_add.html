@@ -1,0 +1,33 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}
+{% if add_package %}
+Add Package
+{% else %}
+Edit Package
+{% endif %}
+{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <div class="center">
+          {% if add_package %}
+          <h1>Add Package</h1>
+          {% else %}
+          <h1>Edit Package</h1>
+          {% endif %}
+          <br />
+          {% if not add_package and package.image %}
+          <h4>Previous Image</h4>
+          <img src="{{ url_for('static', filename='img/' + package.image) }}" class="product-img" alt="Current Image">
+          {% endif %}
+          {{ wtf.quick_form(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

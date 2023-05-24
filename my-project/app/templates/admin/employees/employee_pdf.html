@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employees</title>
+  </head>
+  <body>
+    <div style="display:flex; align-items: center;">
+      
+      <h2 style="text-align: center; margin: 0;">Ceylon Tea Lands</h2>
+    </div>
+    <h1 style="text-align:center;">Employees</h1>
+    <hr class="intro-divider">
+    {% if employees %}
+    <div class="center">
+      <table class="table table-striped table-bordered" style="width: 80%; margin: auto;">
+        <thead>
+          <tr>
+            <th width="10%" class="text-center"> ID </th>
+            <th width="20%" class="text-center"> Name </th>
+            <th width="25%" class="text-center"> Email </th>
+            <th width="25%" class="text-center"> Department </th>
+            <th width="25%" class="text-center"> Role </th>
+            <th width="15%" class="text-center"> Leave Count </th>
+            
+           
+          </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+          <tr>
+            <td class="text-center" style="text-align:center">{{ employee.id }}</td>
+            <td class="text-center" style="text-align:center">{{ employee.first_name }} {{employee.last_name}}</td>
+            <td class="text-center" style="text-align:center">{{ employee.email }}</td>
+            <td class="text-center" style="text-align:center">{{employee.department.name}}</td>
+            <td class="text-center" style="text-align:center">{{ employee.role.name }}</td>
+            <td class="text-center" style="text-align:center">{{ employee.remaining_leave_days }}</td>
+            
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+  </body>
+</html>

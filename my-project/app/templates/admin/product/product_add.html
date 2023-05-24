@@ -1,0 +1,33 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}
+{% if add_product %}
+Add Product
+{% else %}
+Edit Product
+{% endif %}
+{% endblock %}
+{% block body %}
+<div class="content-section " style="overflow-y: auto;">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <div class="center">
+          {% if add_product %}
+          <h1>Add Product</h1>
+          {% else %}
+          <h1>Edit Product</h1>
+          {% endif %}
+          <br />
+          {% if not add_product and product.image_path %}
+          <h4>Previous Image</h4>
+          <img src="{{ url_for('static', filename='img/' + product.image_path) }}" class="product-img" alt="Current Image">
+          {% endif %}
+          
+          {{ wtf.quick_form(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
